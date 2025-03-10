@@ -1,6 +1,6 @@
 const config = {
     API_URL: 'https://us-central1-chuan-compute.cloudfunctions.net/convert_video',
-    MAX_FILE_SIZE: 500 * 1024 * 1024, // 500MB
+    MAX_FILE_SIZE: 4 * 1000 * 1024 * 1024, // 4GB
     ALLOWED_FORMATS: ['.mp4', '.avi', '.mov', '.mkv', '.webm', '.mod', '.mpeg', '.mpg']
 };
 
@@ -25,7 +25,7 @@ class VideoConverter {
     validateFiles(files) {
         for (const file of files) {
             if (file.size > config.MAX_FILE_SIZE) {
-                return `${file.name} is too large. Maximum size is 500MB`;
+                return `${file.name} is too large. Maximum size is 4GB`;
             }
             
             const ext = file.name.toLowerCase().match(/\.[0-9a-z]+$/);
